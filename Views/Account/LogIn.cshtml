@@ -1,0 +1,24 @@
+﻿@model task4.Models.LoginViewModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Log in";
+}
+<div class="container top-margin">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="LogIn" asp-controller="User" method="post">
+                <div class="form-group">
+                    <label asp-for="Email">Email</label>
+                    <input asp-for="Email" type="email" class="form-control" />
+                    <span asp-validation-for="Email"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password">Password</label>
+                    <input asp-for="Password" type="password" class="form-control" />
+                    <span asp-validation-for="Password"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+</div>

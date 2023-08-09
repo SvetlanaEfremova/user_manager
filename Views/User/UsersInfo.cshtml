@@ -1,0 +1,96 @@
+﻿@model IEnumerable<User>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Users info";
+}
+<div class="btn-toolbar mb-3" role="toolbar">
+  <div class="btn-group mr-2" role="group">
+    <button type="button" class="btn btn-primary" onclick="blockSelected()">Block</button>
+    <button type="button" class="btn btn-success" onclick="unblockSelected()">Unblock</button>
+    <button type="button" class="btn btn-danger" onclick="deleteSelected()">Delete</button>
+  </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th><input type="checkbox" id="selectAll" onclick="toggleAllCheckboxes()" /></th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>E-mail</th>
+            <th>Registration date</th>
+            <th>Last login date</th>
+            <th>Is blocked</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><input type="checkbox" name="selectedItem" value="@item.Id" /></td>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Email</td>
+                <td>@item.RegistrationDate</td>
+                <td>@item.LastLoginDate</td>
+                <td>@item.IsBlocked</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+<a href="@Url.Action("LogOut", "User")" class="btn btn-danger">Log Out</a>
+<script>
+    function toggleAllCheckboxes() {
+        var selectAll = document.getElementById('selectAll');
+        var checkboxes = document.getElementsByName('selectedItem');
+        for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = selectAll.checked;
+        }
+    }
+
+    function getSelectedItems() {
+        return Array.from(document.getElementsByName('selectedItem'))
+            .filter(checkbox => checkbox.checked)
+            .map(checkbox => checkbox.value);
+    }
+
+    function performAction(url) {
+        var selectedIds = getSelectedItems();
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ selectedItem: selectedIds })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    if (data.redirectUrl) {
+                        window.location.href = data.redirectUrl;
+                    } else {
+                        location.reload();
+                    }
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                alert('An error occurred.');
+            });
+    }
+
+    function blockSelected() {
+        performAction('@Url.Action("Block", "User")');
+    }
+
+    function unblockSelected() {
+        performAction('@Url.Action("Unblock", "User")');
+    }
+
+    function deleteSelected() {
+        performAction('@Url.Action("Delete", "User")');
+    }
+
+</script>
