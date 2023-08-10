@@ -15,7 +15,6 @@ namespace task4.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        // Дополнительные поля, если нужны
     }
 }
 
