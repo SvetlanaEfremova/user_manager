@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Этот файл используется процессом публикации или упаковки вашего веб-проекта. Можно настроить поведение этого процесса,
+изменив этот файл MSBuild. Подробности см. на странице https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA9jZ99m24ikqsQgQ2byw9wAAAAAACAAAAAAAQZgAAAAEAACAAAABofEntnzTqdLH27ttHRp13YaVeFCmGoabn9f0X0Yvl6QAAAAAOgAAAAAIAACAAAAAHtHhSTytEiFGDS8mvx6aUcMqFcN9ZF0kwWsCSc6+yMoAAAAAOlXsMyPJzq5ugRju29T3j9bM9wBoUbVMkYrkgmTC1PZlTDJ3rY6WxUoA/aSaw1QlZZRexZ8DgBa5tkgZhvNU9J4WmuTDQK0gVber3sjEV7sePnhceXQOkWFgaicOTTdqAKRNgHRIuo1AjcxrED3rXhyZ8t0NbHI6YBM2Lov1S+0AAAAC+9ZVIOe3ei5fnwf3htaum61XlwkRcJzMNiZikNp33Q8c8/FcmTFzaizldfonixD7sWwKYe4aAb32jAKjkZqPt</EncryptedPassword>
+    <History>True|2023-08-10T08:51:28.8955066Z;True|2023-08-10T11:38:57.7640884+04:00;True|2023-08-10T11:25:46.9332495+04:00;True|2023-08-10T01:27:39.6033738+04:00;True|2023-08-10T01:11:02.9979763+04:00;True|2023-08-10T00:38:56.0907989+04:00;True|2023-08-09T22:14:12.9651083+04:00;False|2023-08-09T22:01:32.6916578+04:00;True|2023-08-09T21:58:41.2257720+04:00;True|2023-08-09T21:32:11.3988184+04:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="MyDbConnection">
+      <Value>Data Source=tcp:task4dbserver.database.windows.net,1433%3bInitial Catalog=task4_db%3bUser Id=sqladmin%40task4dbserver%3bPassword=Sqlserver101</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

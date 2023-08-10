@@ -123,7 +123,8 @@ namespace task4.Controllers
                 if (userId == userManager.GetUserId(User)) userBlockedSelf = true;
                 await UpdateUserBlockStatus(userId.ToString(), block);
             }
-            return userBlockedSelf ? await SignUserOut() : GetJSONSuccessMessage();
+            if (block) return userBlockedSelf ? await SignUserOut() : GetJSONSuccessMessage();
+            else return GetJSONSuccessMessage();
         }
 
         private async Task UpdateUserBlockStatus(string userId, bool status)
